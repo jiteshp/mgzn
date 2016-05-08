@@ -160,6 +160,7 @@ figure {
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	.block-element( @base-line-height );
 	font-family: @heading-font;
+	line-height: @heading-line-height;
 }
 
 h1, .h1 {
@@ -348,6 +349,26 @@ label {
 
 textarea {
 	height: @base-line-height * 5;
+}
+
+.button {
+	.make-rounded( @button-border-radius );
+	background-color: @accent-color;
+	border: 0;
+	color: white;
+	display: inline-block;
+	font-size: @small-font-size;
+	letter-spacing: 1px;
+	margin-bottom: 0;
+	padding: @input-padding;
+	padding-left: 2em;
+	padding-right: 2em;
+	text-transform: uppercase;
+	width: auto;
+	
+	&:hover {
+		background-color: @alt-accent-color;
+	}
 }
 
 //
@@ -818,6 +839,10 @@ textarea {
 		top: 50%;
 		transform: translateY( -50% );
 		width: 100%;
+	}
+	
+	.more-link {
+		.button;
 	}
 }
 

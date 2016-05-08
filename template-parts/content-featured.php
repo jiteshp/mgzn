@@ -23,7 +23,7 @@
 									?>
 									
 									<div class="entry-content">
-										<?php the_content(); ?>
+										<?php the_content( __( 'Read More', 'xprt' ) ); ?>
 									</div>
 								</div>
 							</div>
