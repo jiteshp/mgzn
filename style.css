@@ -798,6 +798,12 @@ textarea {
   font-size: 14px;
   margin-bottom: 25px !important;
 }
+.custom-logo-link {
+  border: 0;
+}
+.custom-logo-link .custom-logo {
+  display: block;
+}
 #site-header-cta {
   margin-bottom: 25px;
   text-align: center;

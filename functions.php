@@ -25,7 +25,7 @@ if( ! function_exists( 'mgzn_setup' ) ) {
 		add_theme_support( 'custom-logo', array(
 			'height' 	  => 100,
 			'width'	 	  => 300,
-			'header-text' => array( 'site-title'. 'site-description' ),
+			'header-text' => array( 'site-title', 'site-description' ),
 		) );
 		add_theme_support( 'html5', array(
 			'caption',
