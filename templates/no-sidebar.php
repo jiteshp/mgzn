@@ -10,7 +10,7 @@
 		<div class="container">
 			<div class="row">
 				<!-- main -->
-				<div id="main" class="col-xs-8" role="main">
+				<div id="main" class="col-xs-12 col-md-8" role="main">
 					<?php
 						while( have_posts() ) {
 							the_post();

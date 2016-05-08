@@ -130,7 +130,7 @@ add_action( 'wp_enqueue_scripts', 'mgzn_scripts' );
  */
 function mgzn_body_class( $classes ) {
 	if( ! is_active_sidebar( 'mgzn-sidebar' ) ) {
-		$classes[] = 'no-sidebar-template';
+		$classes[] = 'xprt-no-sidebar';
 	}
 	
 	return $classes;
