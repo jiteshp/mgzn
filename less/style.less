@@ -1,0 +1,822 @@
+/*!
+ *	Theme Name:			Mgzn
+ *	Theme URI:			https://github.com/jiteshp/mgzn
+ *	Version:			1.0.0
+ *	Author:				Jitesh Patil
+ *	Description:		A minimal magazine theme for WordPress. 
+ *	GitHub Theme URI: 	https://github.com/jiteshp/mgzn
+ *
+ *	Copyright 2014 Devamigo
+ *	
+ *	Licensed under the Apache License, Version 2.0 (the "License");
+ *	you may not use this file except in compliance with the License.
+ *	You may obtain a copy of the License at
+ *	
+ *		http://www.apache.org/licenses/LICENSE-2.0
+ *	
+ *	Unless required by applicable law or agreed to in writing, software
+ *	distributed under the License is distributed on an "AS IS" BASIS,
+ *	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *	See the License for the specificspecific language governing permissions and
+ *	limitations under the License.
+ *	----------------------------------------------------------------------------
+ */
+ 
+//
+//	Import
+//	----------------------------------------------------------------------------
+@import 'reset.less';
+@import 'mixins.less';
+
+//
+//	Color variables
+//	----------------------------------------------------------------------------
+@body-bg-color:				#fff;
+@text-color:				#000;
+@accent-color:				#C82647;
+@alt-accent-color:			#D93758;
+@link-color:				#1DA1DB;
+@border-color:				#eee;
+@input-border-color:		#ccc;
+@block-bg-color:			#f6f6f6;
+
+//
+//	Layout variables
+//	----------------------------------------------------------------------------
+@screen-xs:					0;
+@screen-sm:					768px;
+@screen-md:					992px;
+
+@grid-columns:				12;
+@grid-gutter-width:			30px;
+
+@container-width:			990px;
+@container-sm-width:		720px;
+
+//
+//	Type variables
+//	----------------------------------------------------------------------------
+@code-font:					Monaco, Consolas, 'Courier New', monospace;
+@heading-font:				'Roboto Slab', serif;
+@text-font:					Roboto, serif;
+
+@base-font-size:			16px;
+@base-line-height:			25px;
+
+@small-font-size:			14px;
+@big-font-size:				18px;
+@h4-font-size:				18px;
+@h3-font-size:				20px;
+@h2-font-size:				24px;
+@h1-font-size:				32px;
+
+@heading-line-height:		1.25;
+
+//
+//	Input variables
+//	----------------------------------------------------------------------------
+@input-height:				@base-line-height * 2;
+@input-border-width:		1px;
+@input-margin-bottom: 		@base-line-height;
+@input-padding:				( @input-height / 2 - @base-line-height / 2 - @input-border-width );
+
+@button-border-radius:		3px;
+
+//
+//	Layout styles
+//	----------------------------------------------------------------------------
+.container, .container-sm {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: @container-sm-width;
+	padding-left: @grid-gutter-width / 2;
+	padding-right: @grid-gutter-width / 2;
+}
+
+.container {
+	@media( min-width: @screen-md ) {
+		max-width: @container-width;
+	}
+}
+
+.row {
+	.make-row( @grid-gutter-width );
+}
+
+.make-columns( @grid-columns, @grid-gutter-width, xs );
+
+@media( min-width: @screen-sm ) {
+	.make-columns( @grid-columns, @grid-gutter-width, xs );
+}
+
+@media( min-width: @screen-md ) {
+	.make-columns( @grid-columns, @grid-gutter-width, md );
+}
+
+//
+//	Typographic styles
+//	----------------------------------------------------------------------------
+body {
+	background-color: @body-bg-color;
+}
+
+body, input, select, textarea {
+	color: @text-color;
+	font-family: @text-font;
+	font-size: @base-font-size;
+	line-height: @base-line-height;
+}
+
+address, blockquote, dl, hr, figure, ol, p, pre, table, ul {
+	.block-element( @base-line-height );
+}
+
+address, blockquote, figure {
+	background-color: @block-bg-color;
+	border: solid 1px @border-color;
+	padding: @base-line-height;
+}
+
+dl {
+	dt {
+		font-weight: bold;
+	}
+	
+	dd {
+		margin-left: @grid-gutter-width;
+	}
+}
+
+figure {
+	height: auto;
+	max-width: 100%;
+	
+	figcaption {
+		padding: @base-line-height;
+		padding-bottom: 0;
+	}
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	.block-element( @base-line-height );
+	font-family: @heading-font;
+}
+
+h1, .h1 {
+	font-size: @h1-font-size;
+}
+
+h2, .h2 {
+	font-size: @h2-font-size;
+}
+
+h3, .h3 {
+	font-size: @h3-font-size;
+}
+
+h4, .h4 {
+	font-size: @h4-font-size;
+}
+
+h4, .h4, h5, .h5, h6, .h6 {
+	font-weight: bold;
+}
+
+hr {
+	border: 0;
+	border-bottom: solid 1px @border-color;
+}
+
+ol, ul {
+	margin-left: @grid-gutter-width;
+}
+
+ol {
+	list-style: decimal;
+}
+
+ul {
+	list-style: disc;
+}
+
+table {
+	border: solid 1px @border-color;
+	width: 100%;
+	
+	td, th {
+		border-bottom: solid 1px @border-color;
+		border-right: solid 1px @border-color;
+		padding: @base-line-height / 2;
+	}
+	
+	th {
+		font-weight: bold;
+	}
+}
+
+a {
+	.animate();
+	border-bottom: solid 1px @link-color;
+	color: @link-color;
+	text-decoration: none;
+	
+	&:hover {
+		color: @accent-color;
+	}
+}
+
+abbr, acronym {
+	border-bottom: dotted 1px @text-color;
+	cursor: help;
+	text-decoration: none;
+	
+	a & {
+		border-bottom: 0;
+	}
+}
+
+big {
+	font-size: @big-font-size;
+}
+
+cite {
+	font-weight: bold;
+	
+	blockquote & {
+		display: block;
+		margin-top: @base-line-height;
+		
+		&:before {
+			content: '\2014';
+			margin-right: 5px;
+		}
+	}
+}
+
+code, kbd, tt, var, pre {
+	font-family: @code-font;
+	font-size: @small-font-size;
+}
+
+del, strike {
+	text-decoration: line-through;
+}
+
+em {
+	font-style: italic;
+}
+
+img {
+	height: auto;
+	max-width: 100%;
+}
+
+ins {
+	border-bottom: solid 1px @border-color;
+	text-decoration: none;
+}
+
+quote {
+	&:before {
+		content: '\201c';
+	}
+	
+	&:after {
+		content: '\201d';
+	}
+}
+
+small {
+	font-size: @small-font-size;
+}
+
+strong {
+	font-weight: bold;
+}
+
+sub, sup {
+	font-size: @small-font-size;
+	position: relative;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+sup {
+	top: -0.5em;
+}
+
+//
+//	Input styles
+//	----------------------------------------------------------------------------
+form p {
+	margin-bottom: 0;
+}
+
+input, select, textarea {
+	border: solid @input-border-width @input-border-color;
+	display: block;
+	margin-bottom: @input-margin-bottom;
+	padding: @input-padding;
+	width: 100%;
+}
+
+input[type=submit] {
+	.animate();
+	.make-rounded( @button-border-radius );
+	background-color: @accent-color;
+	border: 0;
+	color: white;
+	cursor: pointer;
+	font-size: @small-font-size;
+	letter-spacing: 1px;
+	margin-bottom: 0;
+	padding-left: 2em;
+	padding-right: 2em;
+	text-transform: uppercase;
+	width: auto;
+	
+	&:hover {
+		background-color: @alt-accent-color;
+	}
+}
+
+label {
+	font-size: @small-font-size;
+}
+
+textarea {
+	height: @base-line-height * 5;
+}
+
+//
+//	Common WordPress styles
+//	----------------------------------------------------------------------------
+.aligncenter {
+	display: block;
+	margin: 0 auto;
+}
+
+.alignleft {
+	display: inline;
+	float: left;
+	margin: 0 @grid-gutter-width @base-line-height 0;
+}
+
+.alignright {
+	display: inline;
+	float: right;
+	margin: 0 0 @base-line-height @grid-gutter-width;
+}
+
+.search-form {
+	input {
+		margin-bottom: 0;
+		
+		&[type=submit] {
+			display: none;
+		}
+	}
+}
+
+.widget {
+	border-bottom: solid 1px @border-color;
+	padding: ( @base-line-height * 1.5 ) 0;
+	
+	&:last-child {
+		border-bottom: 0;
+	}
+	
+	.widget-title {
+		border-bottom: solid 1px @text-color;
+		margin-bottom: @base-line-height / 2;
+		padding-bottom: @base-line-height / 2;
+	}
+	
+	ol, ul {
+		list-style: none;
+		margin-left: 0;
+	}
+	
+	li {
+		border-bottom: solid 1px @border-color;
+		margin-bottom: @base-line-height / 2;
+		padding-bottom: @base-line-height / 2;
+		
+		&:last-child {
+			border-bottom: 0;
+			margin-bottom: 0;
+			padding-bottom: 0;
+		}
+		
+		li {
+			border-bottom: 0;
+			border-top: dotted 1px @border-color;
+			margin-bottom: @base-line-height / 2;
+			margin-top: 0;
+			padding-bottom: 0;
+			padding-left: @grid-gutter-width;
+			padding-top: @base-line-height / 2;
+		}
+	}
+}
+
+//
+//	Site header styles
+//	----------------------------------------------------------------------------
+#site-header {
+	border-bottom: solid 1px @border-color;
+}
+
+//
+//	Brand styles
+//	----------------------------------------------------------------------------
+#brand {
+	text-align: center;
+	
+	@media( min-width: @screen-md ) {
+		text-align: left;
+	}
+}
+
+.site-title {
+	font-weight: bold;
+	letter-spacing: 1px;
+	line-height: @base-line-height * 2;
+	margin-bottom: 0;
+	margin-top: @base-line-height;
+	text-transform: uppercase;
+	
+	a {
+		border: 0;
+		color: @accent-color;
+	}
+}
+
+.site-description {
+	font-size: @small-font-size;
+	margin-bottom: @base-line-height !important;
+}
+
+//
+//	Header CTA styles
+//	----------------------------------------------------------------------------
+#site-header-cta {
+	margin-bottom: @base-line-height;
+	text-align: center;
+	
+	@media( min-width: @screen-md ) {
+		margin-top: @base-line-height;
+		text-align: right;
+	}
+}
+
+//
+//	Primary nav styles
+//	----------------------------------------------------------------------------
+#primary-nav {
+	border-bottom: solid 1px @border-color;
+	font-size: @small-font-size;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+#primary-menu-toggle {
+	background-color: transparent;
+	border: 0;
+	cursor: pointer;
+	display: block;
+	margin: 0;
+	padding: ( @base-line-height / 2 ) 0;
+	width: 100%;
+	
+	@media( min-width: @screen-md ) {
+		display: none;
+	}
+}
+	
+#primary-menu {
+	display: none;
+	list-style: none;
+	margin-left: 0;
+	
+	@media( min-width: @screen-md ) {
+		display: block;
+		text-align: center;
+	}
+	
+	li {
+		border-top: dotted 1px @border-color;
+		
+		@media( min-width: @screen-md ) {
+			border-top: 0;
+			display: inline;
+		}
+	}
+	
+	a {
+		border: 0;
+		color: @text-color;
+		display: inline-block;
+		padding: ( @base-line-height / 2 ) 0;
+		
+		&:hover {
+			color: @accent-color;
+		}
+		
+		@media( min-width: @screen-md ) {
+			padding-left: @base-line-height / 2;
+			padding-right: @base-line-height / 2;
+			width: auto;
+		}
+	}
+	
+	.current-menu-item > a {
+		color: @accent-color;
+	}
+}
+
+//
+//	Page header styles
+//	----------------------------------------------------------------------------
+#page-header {
+	padding-top: @base-line-height * 1.5;
+	text-align: center;
+	
+	&:after {
+		border-bottom: solid 4px @accent-color;
+		content: '';
+		display: block;
+		margin: 0 auto;
+		margin-top: @base-line-height * 1.5;
+		max-width: @grid-gutter-width * 2;
+	}
+}
+
+//
+//	Post navigation styles
+//	----------------------------------------------------------------------------
+.posts-navigation {
+	padding: ( @base-line-height * 1.5 ) 0;
+	
+	.nav-previous, .nav-next {
+		padding: 0 ( @grid-gutter-width / 2 );
+		width: 50%;
+	}
+	
+	.nav-previous {
+		float: left;
+		text-align: right;
+		
+		a:before {
+			content: '\2190';
+			margin-right: 3px;
+		}
+	}
+	
+	.nav-next {
+		float: right;
+		
+		a:after {
+			content: '\2192';
+			margin-left: 3px;
+		}
+	}
+}
+
+//
+//	Entry styles
+//	----------------------------------------------------------------------------
+.hentry {
+	border-bottom: solid 1px @border-color;
+	padding: ( @base-line-height * 1.5 ) 0;
+	
+	&:last-child {
+		border-bottom: 0;
+	}
+}
+
+.entry-header {
+	margin-bottom: @base-line-height;
+	text-align: center;
+
+	.entry-meta {
+		margin: ( @base-line-height / 2 ) 0;
+	}
+}
+
+.entry-title {
+	margin-bottom: 0;
+	
+	a {
+		border: 0;
+		color: @text-color;
+		
+		&:hover {
+			color: @accent-color;
+		}
+	}
+}
+
+.entry-meta {
+	font-size: @small-font-size;
+	
+	a {
+		border: 0;
+	}
+	
+	.entry-comments-link {
+		&:before {
+			content: '\2014';
+			margin: 0 5px;
+		}
+	}
+}
+
+.entry-content {
+	.block-element( @base-line-height );
+}
+
+.entry-image {
+	a {
+		border: 0;
+	}
+}
+
+.entry-tags:before {
+	content: '\2014';
+	margin: 0 5px;
+}
+
+//
+//	Entry comment styles
+//	----------------------------------------------------------------------------
+#comments {
+	padding: ( @base-line-height * 2 ) 0;
+}
+
+#comments-title {
+	border-bottom: dotted 1px @border-color;
+	padding-bottom: @base-line-height;
+}
+
+#comments-list {
+	&, & ol {
+		list-style: none;
+		margin-left: 0;
+	}
+}
+
+.comment {
+	border-bottom: dotted 1px @border-color;
+	margin-bottom: @base-line-height;
+	padding-bottom: @base-line-height;
+	
+	.children & {
+		border-bottom: 0;
+		border-top: dotted 1px @border-color;
+		margin-bottom: 0;
+		margin-left: @grid-gutter-width * 2;
+		margin-top: @base-line-height;
+		padding-bottom: 0;
+		padding-top: @base-line-height;
+	}
+}
+
+.comment-meta {
+	.clr;
+	margin-bottom: @base-line-height / 2;
+	
+	.avatar {
+		float: left;
+		margin-right: 15px;
+	}
+	
+	.comment-metadata {
+		font-size: @small-font-size;
+		
+		a {
+			border: 0;
+			color: @text-color;
+			cursor: text;
+		}
+	}
+}
+
+.comment-content {
+	margin-bottom: @base-line-height / 2;
+}
+
+.comment-respond {
+	background-color: @block-bg-color;
+	border: solid 1px @border-color;
+	padding: @base-line-height;
+	
+	.comment & {
+		margin-top: @base-line-height;
+	}
+	
+	.form-submit {
+		margin-bottom: 0;
+	}
+}
+
+.logged-in-as, .comment-notes {
+	margin-bottom: @base-line-height;
+}
+
+.comment-reply-title {
+	small {
+		float: right;
+		font-family: @text-font;
+		font-size: @small-font-size;
+	}
+}
+
+//
+//	Sidebar styles
+//	----------------------------------------------------------------------------
+#sidebar {
+	border-top: solid 1px @border-color;
+	
+	@media( min-width: @screen-md ) {
+		border-top: 0;
+	}
+}
+
+//
+//	Site footer styles
+//	----------------------------------------------------------------------------
+#site-footer {
+	background-color: @border-color;
+}
+
+//
+//	Footer sidebar styles
+//	----------------------------------------------------------------------------
+#sidebar-footer {
+	border-bottom: solid 1px @input-border-color;
+	
+	.widget {
+		border-bottom: 0;
+	}
+		
+	.widget li {
+		border-bottom-color: @input-border-color;
+	}
+}
+
+//
+//	Copyright styles
+//	----------------------------------------------------------------------------
+#copyright {
+	font-size: @small-font-size;
+	padding: @base-line-height 0;
+	text-align: center;
+}
+
+//
+//	Featured content styles
+//	----------------------------------------------------------------------------
+#featured-content {
+	.container {
+		border-bottom: solid 1px @border-color;
+		padding-bottom: @base-line-height * 1.5; 
+		padding-top: @base-line-height * 1.5; 
+	}
+	
+	.cycle-slide {
+		width: 100%;
+	}
+	
+	.cycle-pager {
+		color: @border-color;
+		font-size: 3em;
+		margin-top: @base-line-height / 2;
+		text-align: center;
+		
+		.cycle-pager-active {
+			color: @input-border-color;
+		}
+	}
+}
+
+.featured-post {
+	.overlay();
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	color: white;
+	padding-bottom: 40%;
+	position: relative;
+	text-align: center;
+	width: 100%;
+	
+	.featured-post-content {
+		position: absolute;
+		top: 50%;
+		transform: translateY( -50% );
+		width: 100%;
+	}
+}
