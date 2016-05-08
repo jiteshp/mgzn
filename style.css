@@ -1074,10 +1074,9 @@ textarea {
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
-  padding-bottom: 40%;
+  padding: 50px 0;
   position: relative;
   text-align: center;
-  width: 100%;
 }
 .featured-post,
 .featured-post > * {
@@ -1095,11 +1094,20 @@ textarea {
   top: 0;
   width: 100%;
 }
-.featured-post .featured-post-content {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 100%;
+@media (min-width: 992px) {
+  .featured-post {
+    padding-top: 0;
+    padding-bottom: 40%;
+    width: 100%;
+  }
+}
+@media (min-width: 992px) {
+  .featured-post .featured-post-content {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+  }
 }
 .featured-post .more-link {
   -webkit-border-radius: 3px;

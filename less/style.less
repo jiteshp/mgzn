@@ -837,16 +837,23 @@ textarea {
 	background-repeat: no-repeat;
 	background-size: cover;
 	color: white;
-	padding-bottom: 40%;
+	padding: ( @base-line-height * 2 ) 0;
 	position: relative;
 	text-align: center;
-	width: 100%;
+	
+	@media( min-width: @screen-md ) {
+		padding-top: 0;
+		padding-bottom: 40%;
+		width: 100%;
+	}
 	
 	.featured-post-content {
-		position: absolute;
-		top: 50%;
-		transform: translateY( -50% );
-		width: 100%;
+		@media( min-width: @screen-md ) {
+			position: absolute;
+			top: 50%;
+			transform: translateY( -50% );
+			width: 100%;
+		}
 	}
 	
 	.more-link {
