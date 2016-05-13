@@ -330,6 +330,7 @@ input[type=submit] {
 	border: 0;
 	color: white;
 	cursor: pointer;
+	display: inline-block;
 	font-size: @small-font-size;
 	letter-spacing: 1px;
 	margin-bottom: 0;
@@ -341,6 +342,11 @@ input[type=submit] {
 	&:hover {
 		background-color: @alt-accent-color;
 	}
+}
+
+input[type=checkbox], input[type=radio] {
+	display: inline-block;
+	width: auto;
 }
 
 label {
@@ -368,6 +374,7 @@ textarea {
 	
 	&:hover {
 		background-color: @alt-accent-color;
+		color: white;
 	}
 }
 
@@ -869,5 +876,38 @@ textarea {
 		float: none;
 		margin-left: auto;
 		margin-right: auto;
+	}
+}
+
+//
+//	WP Contact Form 7 Stlyes
+//	----------------------------------------------------------------------------
+.wpcf7 {
+	background-color: @block-bg-color;
+	border: solid 1px @border-color;
+	padding: @base-line-height !important;
+	
+	.wpcf7-not-valid-tip {
+		.screen-reader-text;
+	}
+	
+	.wpcf7-not-valid {
+		border-color: red;
+	}
+	
+	.ajax-loader {
+		margin-left: 10px;
+	}
+	
+	.wpcf7-response-output {
+		border: solid 1px red !important;
+		color: red;
+		margin-left: 0 !important;
+		padding: ( @base-line-height / 2 ) @base-line-height;
+		
+		&.wpcf7-mail-sent-ok {
+			border-color: #398f14 !important;
+			color: #398f14 !important;
+		}
 	}
 }
